@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feedback and Reviews</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f7f7f7;
+      }
+      .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h1,
+      h2 {
+        text-align: center;
+        color: #333;
+      }
+      .feedback {
+        margin-top: 20px;
+      }
+      .feedback-item {
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-bottom: 20px;
+        background-color: #f9f9f9;
+        position: relative;
+      }
+      .feedback-item:last-child {
+        margin-bottom: 0;
+      }
+      .feedback-details {
+        margin-bottom: 10px;
+      }
+      .feedback-rating {
+        color: #ffd700;
+      }
+      .feedback-user {
+        margin-bottom: 5px;
+      }
+      .feedback-product {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      .admin-response {
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-bottom: 20px;
+        background-color: #f0f0f0;
+      }
+      .admin-response textarea {
+        width: calc(100% - 40px);
+        height: 100px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        resize: none;
+        margin-bottom: 10px;
+        margin-right: 20px;
+      }
+      .admin-response input[type="submit"] {
+        background-color: #4caf50;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      .admin-response input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+      .animate__fadeIn {
+        animation: fadeIn 1s ease forwards;
+      }
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Feedback and Reviews</h1>
+
+      <div class="feedback">
+        <h2>User Feedbacks</h2>
+
+        <!-- Feedback item -->
+        <div class="feedback-item animate__fadeIn">
+          <div class="feedback-details">
+            <p class="feedback-user"><strong>Name:</strong> Ali</p>
+            <p><strong>Email:</strong> jcsa.dasae@exdssd.com</p>
+            <p><strong>Date:</strong> Jan-22-2022</p>
+            <p><strong>Product:</strong> vivo</p>
+            <p>
+              <strong>Rating:</strong> <span class="feedback-rating">4/5</span>
+            </p>
+          </div>
+          <p>
+            <strong>Feedback:</strong> Lorem ipsum dolor sit amet, consectetur
+            adipiscing elit. Sed ut est in orci faucibus gravida eu vel odio.
+          </p>
+          <div class="admin-response">
+            <p><strong>Admin Response:</strong> No response yet.</p>
+            <form>
+              <textarea placeholder="Enter response..."></textarea><br />
+              <input type="submit" value="Submit-Response" />
+            </form>
+          </div>
+        </div>
+
+        <!-- Another feedback item -->
+        <div class="feedback-item animate__fadeIn">
+          <div class="feedback-details">
+            <p class="feedback-user"><strong>Name:</strong> Jamshed</p>
+            <p><strong>Email:</strong> jam.izdxc@czle.com</p>
+            <p><strong>Date:</strong> Jan-22-2023</p>
+            <p><strong>Product:</strong> Redmi</p>
+            <p>
+              <strong>Rating:</strong> <span class="feedback-rating">5/5</span>
+            </p>
+          </div>
+          <p>
+            <strong>Feedback:</strong> Duis aute irure dolor in reprehenderit in
+            voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          </p>
+          <div class="admin-response">
+            <p><strong>Admin Response:</strong> Thank you for your feedback!</p>
+            <form>
+              <textarea placeholder="Enter response..."></textarea><br />
+              <input type="submit" value="Submit-Response" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

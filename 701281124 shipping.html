@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shipping Information</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #5f72bd, #9b23ea);
+        color: #fff;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      }
+      .profile,
+      .form-container {
+        padding: 20px;
+      }
+      .profile h2,
+      .form-container h1 {
+        margin-bottom: 20px;
+        font-size: 24px;
+        text-transform: uppercase;
+        color: #333;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+      }
+      .profile p {
+        margin-bottom: 10px;
+        font-size: 18px;
+        color: #555;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+      }
+      .profile img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-bottom: 20px;
+      }
+      .form-container {
+        margin-top: 20px;
+      }
+      h1 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #333;
+        font-size: 36px;
+        text-transform: uppercase;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+      label {
+        margin-bottom: 10px;
+        color: #333;
+        font-size: 20px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+      }
+      input[type="text"],
+      select {
+        padding: 12px;
+        margin-bottom: 20px;
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        font-size: 18px;
+        transition: border-color 0.3s ease-in-out;
+      }
+      input[type="text"]:focus,
+      select:focus {
+        border-color: #4caf50;
+        outline: none;
+      }
+      input[type="submit"] {
+        background: linear-gradient(135deg, #4caf50, #45a049);
+        color: #fff;
+        border: none;
+        padding: 15px 30px;
+        cursor: pointer;
+        border-radius: 50px;
+        font-size: 20px;
+        transition: background-color 0.3s ease-in-out;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: bold;
+        outline: none;
+        overflow: hidden;
+        position: relative;
+        z-index: 0;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+      input[type="submit"]:hover {
+        background: linear-gradient(135deg, #45a049, #4caf50);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      }
+      input[type="submit"]::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.3);
+        transition: width 0.3s ease;
+        border-radius: 50px;
+        z-index: -1;
+      }
+      input[type="submit"]:hover::before {
+        width: 100%;
+      }
+      .summary {
+        margin-top: 30px;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      }
+      .summary h2 {
+        color: #333;
+        margin-bottom: 20px;
+        font-size: 28px;
+        text-transform: uppercase;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+      }
+      .summary p {
+        margin-bottom: 15px;
+        color: #555;
+        font-size: 18px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+      }
+      .summary p strong {
+        color: #333;
+        font-weight: bold;
+      }
+
+      /* Responsive Styling */
+      @media screen and (min-width: 768px) {
+        .container {
+          flex-direction: row;
+          align-items: stretch;
+        }
+        .profile,
+        .form-container {
+          flex: 1;
+        }
+        .profile {
+          margin-right: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="profile">
+        <img src="person.jpeg" alt="Profile Picture" />
+        <h2>Profile Info</h2>
+        <p><strong>Name:</strong> Jane</p>
+        <p><strong>Email:</strong> jane.@esdcle.com</p>
+        <p><strong>Phone:</strong> 0 364-4859-38</p>
+        <p><strong>Address:</strong> 123 jail Street, lhr, Pak</p>
+      </div>
+      <div class="form-container">
+        <h1>Shipping Information</h1>
+        <form>
+          <label for="shipping_address">Shipping Address:</label>
+          <input
+            type="text"
+            id="shipping_address"
+            name="shipping_address"
+            placeholder="Enter your shipping address"
+            required
+          />
+          <label for="contact_details">Contact Details:</label>
+          <input
+            type="text"
+            id="contact_details"
+            name="contact_details"
+            placeholder="Enter your contact details"
+            required
+          />
+          <label for="shipping_method">Select Shipping Method:</label>
+          <select id="shipping_method" name="shipping_method">
+            <option value="standard">
+              Standard Shipping - $5.00 (3-5 days)
+            </option>
+            <option value="express">
+              Express Shipping - $10.00 (1-2 days)
+            </option>
+            <option value="overnight">
+              Overnight Shipping - $20.00 (next day)
+            </option>
+          </select>
+          <input type="submit" value="Submit" />
+        </form>
+        <div class="summary">
+          <h2>Order Summary</h2>
+          <p>
+            <strong>Shipping Address:</strong>
+            <span id="summary_shipping_address"></span>
+          </p>
+          <p>
+            <strong>Contact Details:</strong>
+            <span id="summary_contact_details"></span>
+          </p>
+          <p>
+            <strong>Shipping Method:</strong>
+            <span id="summary_shipping_method"></span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document
+        .querySelector("form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent form submission
+
+          // Get form values
+          var shippingAddress =
+            document.getElementById("shipping_address").value;
+          var contactDetails = document.getElementById("contact_details").value;
+          var shippingMethod = document.getElementById("shipping_method").value;
+
+          // Update order summary
+          document.getElementById("summary_shipping_address").textContent =
+            shippingAddress;
+          document.getElementById("summary_contact_details").textContent =
+            contactDetails;
+          document.getElementById("summary_shipping_method").textContent =
+            shippingMethod;
+        });
+    </script>
+  </body>
+</html>

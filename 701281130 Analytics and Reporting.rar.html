@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sales Analysis Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      .charts-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px;
+        margin-bottom: 40px;
+      }
+
+      .chart-container {
+        flex: 1 1 300px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+
+      .summary-container {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      #clock {
+        text-align: center;
+        font-size: 24px;
+        margin-bottom: 40px;
+        color: #333;
+      }
+
+      #calendar {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Sales Analysis Dashboard</h1>
+
+      <div class="charts-container">
+        <div class="chart-container">
+          <canvas id="salesGrowthChart"></canvas>
+        </div>
+        <div class="chart-container">
+          <canvas id="productSalesChart"></canvas>
+        </div>
+        <div class="chart-container">
+          <canvas id="salesDistributionChart"></canvas>
+        </div>
+        <div class="chart-container">
+          <canvas id="revenueContributionChart"></canvas>
+        </div>
+      </div>
+
+      <div class="summary-container">
+        <h2>Statistical Summary of Products</h2>
+        <p>Total Products: 100</p>
+        <p>Average Price: $50</p>
+        <p>Max Price: $100</p>
+        <p>Min Price: $20</p>
+      </div>
+
+      <div id="clock"></div>
+
+      <div id="calendar">
+        <iframe
+          src="https://calendar.google.com/calendar/embed?src=en.usa%23holiday%40group.v.calendar.google.com"
+          style="border: 0"
+          width="800"
+          height="600"
+          frameborder="0"
+          scrolling="no"
+        ></iframe>
+      </div>
+    </div>
+
+    <script>
+      // Sample data for the charts
+      const salesGrowthData = {
+        labels: ["January", "February", "March", "April", "May", "June"],
+        datasets: [
+          {
+            label: "Sales Growth (%)",
+            backgroundColor: "rgba(54, 162, 235, 0.2)",
+            borderColor: "rgba(54, 162, 235, 1)",
+            borderWidth: 1,
+            data: [10, 20, 30, 25, 40, 35],
+          },
+        ],
+      };
+
+      const productSalesData = {
+        labels: [
+          "Product A",
+          "Product B",
+          "Product C",
+          "Product D",
+          "Product E",
+        ],
+        datasets: [
+          {
+            label: "Sales Volume",
+            backgroundColor: [
+              "rgba(255, 99, 132, 0.2)",
+              "rgba(54, 162, 235, 0.2)",
+              "rgba(255, 206, 86, 0.2)",
+              "rgba(75, 192, 192, 0.2)",
+              "rgba(153, 102, 255, 0.2)",
+            ],
+            borderColor: [
+              "rgba(255, 99, 132, 1)",
+              "rgba(54, 162, 235, 1)",
+              "rgba(255, 206, 86, 1)",
+              "rgba(75, 192, 192, 1)",
+              "rgba(153, 102, 255, 1)",
+            ],
+            borderWidth: 1,
+            data: [200, 300, 250, 400, 350],
+          },
+        ],
+      };
+
+      const salesDistributionData = {
+        labels: [
+          "Product A",
+          "Product B",
+          "Product C",
+          "Product D",
+          "Product E",
+        ],
+        datasets: [
+          {
+            label: "Sales Distribution by Product",
+            backgroundColor: [
+              "rgba(255, 99, 132, 0.2)",
+              "rgba(54, 162, 235, 0.2)",
+              "rgba(255, 206, 86, 0.2)",
+              "rgba(75, 192, 192, 0.2)",
+              "rgba(153, 102, 255, 0.2)",
+            ],
+            borderColor: [
+              "rgba(255, 99, 132, 1)",
+              "rgba(54, 162, 235, 1)",
+              "rgba(255, 206, 86, 1)",
+              "rgba(75, 192, 192, 1)",
+              "rgba(153, 102, 255, 1)",
+            ],
+            borderWidth: 1,
+            data: [200, 300, 250, 400, 350],
+          },
+        ],
+      };
+
+      const revenueContributionData = {
+        labels: [
+          "Product A",
+          "Product B",
+          "Product C",
+          "Product D",
+          "Product E",
+        ],
+        datasets: [
+          {
+            label: "Contribution to Total Revenue",
+            backgroundColor: [
+              "rgba(255, 99, 132, 0.2)",
+              "rgba(54, 162, 235, 0.2)",
+              "rgba(255, 206, 86, 0.2)",
+              "rgba(75, 192, 192, 0.2)",
+              "rgba(153, 102, 255, 0.2)",
+            ],
+            borderColor: [
+              "rgba(255, 99, 132, 1)",
+              "rgba(54, 162, 235, 1)",
+              "rgba(255, 206, 86, 1)",
+              "rgba(75, 192, 192, 1)",
+              "rgba(153, 102, 255, 1)",
+            ],
+            borderWidth: 1,
+            data: [2000, 3000, 2500, 4000, 3500],
+          },
+        ],
+      };
+
+      // Chart configurations
+      const salesGrowthConfig = {
+        type: "line",
+        data: salesGrowthData,
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      };
+
+      const productSalesConfig = {
+        type: "bar",
+        data: productSalesData,
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      };
+
+      const salesDistributionConfig = {
+        type: "pie",
+        data: salesDistributionData,
+      };
+
+      const revenueContributionConfig = {
+        type: "pie",
+        data: revenueContributionData,
+      };
+
+      // Create Chart instances
+      const salesGrowthChart = new Chart(
+        document.getElementById("salesGrowthChart"),
+        salesGrowthConfig
+      );
+
+      const productSalesChart = new Chart(
+        document.getElementById("productSalesChart"),
+        productSalesConfig
+      );
+
+      const salesDistributionChart = new Chart(
+        document.getElementById("salesDistributionChart"),
+        salesDistributionConfig
+      );
+
+      const revenueContributionChart = new Chart(
+        document.getElementById("revenueContributionChart"),
+        revenueContributionConfig
+      );
+
+      // Update clock
+      function updateClock() {
+        const now = new Date();
+        const hours = String(now.getHours()).padStart(2, "0");
+        const minutes = String(now.getMinutes()).padStart(2, "0");
+        const seconds = String(now.getSeconds()).padStart(2, "0");
+        document.getElementById(
+          "clock"
+        ).textContent = `${hours}:${minutes}:${seconds}`;
+      }
+
+      // Update clock every second
+      setInterval(updateClock, 1000);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order Summary</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #1f1f1f;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        overflow: hidden;
+      }
+
+      .container {
+        display: flex;
+        max-width: 800px;
+        width: 90%;
+        border-radius: 20px;
+        overflow: hidden;
+        background-color: #1f1f1f;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .profile-card {
+        flex: 1;
+        background: linear-gradient(to bottom right, #ff7e5f, #ff6a88);
+        padding: 30px;
+        border-radius: 20px 0 0 20px;
+        box-shadow: 0 0 20px rgba(255, 106, 136, 0.4);
+        transition: transform 0.3s ease;
+        overflow: hidden;
+      }
+
+      .profile-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .profile {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+      }
+
+      .profile img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-right: 30px;
+        border: 4px solid #fff;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        transition: transform 0.3s ease;
+      }
+
+      .profile img:hover {
+        transform: scale(1.05);
+      }
+
+      .profile-info {
+        color: #fff;
+      }
+
+      .purchase-history {
+        color: #fff;
+        margin-bottom: 30px;
+      }
+
+      .purchase-history h2 {
+        margin-bottom: 15px;
+        color: #fff;
+      }
+
+      .purchase-history ul {
+        padding-left: 20px;
+      }
+
+      .purchase-history li {
+        margin-bottom: 10px;
+        color: #f5f5f5;
+      }
+
+      .order-summary {
+        flex: 2;
+        background-color: #fff;
+        border-radius: 0 20px 20px 0;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+
+      h1,
+      h2 {
+        color: #1f1f1f;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .item {
+        padding: 20px;
+        border-bottom: 1px solid #eee;
+        transition: background-color 0.3s ease;
+      }
+
+      .item:hover {
+        background-color: #f5f5f5;
+      }
+
+      .item:last-child {
+        border-bottom: none;
+      }
+
+      .item-details {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .item-details p {
+        margin: 5px 0;
+        color: #777;
+      }
+
+      .total {
+        font-weight: bold;
+        padding: 20px;
+        background-color: #f5f5f5;
+        border-top: 1px solid #eee;
+        border-radius: 0 0 20px 20px;
+      }
+
+      @media screen and (max-width: 600px) {
+        .container {
+          flex-direction: column;
+          border-radius: 20px;
+        }
+        .profile-card,
+        .order-summary {
+          border-radius: 20px;
+        }
+        .profile img {
+          width: 80px;
+          height: 80px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="profile-card">
+        <div class="profile">
+          <img src="person.jpeg" alt="Profile Picture" />
+          <div class="profile-info">
+            <h2 style="font-size: 28px">John Doe</h2>
+            <p>Email: john@example.com</p>
+            <p>Address: 123 Main St, City</p>
+          </div>
+        </div>
+        <div class="purchase-history">
+          <h2>Purchase History</h2>
+          <ul>
+            <li>Product 1 - $10.00</li>
+            <li>Product 2 - $15.00</li>
+            <li>Product 3 - $20.00</li>
+          </ul>
+        </div>
+      </div>
+      <div class="order-summary">
+        <h1>Order Summary</h1>
+        <div class="item">
+          <div class="item-details">
+            <div>
+              <p>Product Name: Sample Product 1</p>
+              <p>Quantity: 2</p>
+              <p>Price: $10.00 each</p>
+            </div>
+            <div>
+              <p>Subtotal: $20.00</p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="item-details">
+            <div>
+              <p>Product Name: Sample Product 2</p>
+              <p>Quantity: 1</p>
+              <p>Price: $15.00 each</p>
+            </div>
+            <div>
+              <p>Subtotal: $15.00</p>
+            </div>
+          </div>
+        </div>
+        <div class="total">
+          <p>Total Items: 3</p>
+          <p>Subtotal: $35.00</p>
+          <p>Taxes: $3.50</p>
+          <p>Shipping: $5.00</p>
+          <p><strong>Grand Total: $43.50</strong></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
